@@ -1,10 +1,13 @@
 const express = require("express");
 const server = express();
-server.use(express.json());
+
+const helmet = require("helmet");
 
 // import data from db
 
 const Posts = require("./data/db.js");
+server.use(express.json());
+server.use(helmet());
 
 // Sanity test for Mr. Hernandez
 server.get("/", (req, res) => {
